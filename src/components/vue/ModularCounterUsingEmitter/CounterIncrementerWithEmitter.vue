@@ -1,5 +1,5 @@
 <template>
-  <button class="btn btn-secondary" @click="emit('increment')">
+  <button class="btn btn-secondary" @click="emit('increment', 'Data from children')">
     Increment
   </button>
 </template>
