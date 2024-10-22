@@ -17,34 +17,17 @@ const { title } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body>
+		<div class="h-screen flex flex-col justify-between">
+		<header class="navbar bg-primary text-primary-content"><h1>VUE & REACT COMPARISON</h1>
+			<nav class="flex gap-x-2 mx-4"> React <a class="link" href="/react/single">Single File</a> <a class="link" href="/react/modular">Modular</a></nav>
+			<nav class="flex gap-x-2 mx-4"> Vue <a class="link" href="/vue/single">Single File</a> <a class="link" href="/vue/modular">Modular</a> <a class="link" href="/vue/modular">Modular with event emitter</a> <a class="link" href="/vue/modular">Modular with model</a></nav></header>
 		<slot />
+		<footer class="footer footer-center bg-primary text-base-content p-4">
+			<aside>
+			  <p>Karol Kosek - Deployed - {new Date().getFullYear()}</p>
+			</aside>
+		  </footer>
+		</div>
 	</body>
 </html>
-<style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background: #13151a;
-	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
-	}
-</style>
+
