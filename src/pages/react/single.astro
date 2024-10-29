@@ -7,18 +7,20 @@ import Layout from '../../layouts/Layout.astro';
 
 <Layout title="VUE & REACT COMPARISON">
 	<main class="flex justify-center">
-        <WrapperWithCodeInMarkdown markdownContent={`const SingleComponentCounter = () => {
-            const [count, setCount] = useState(0);
+        <WrapperWithCodeInMarkdown markdownContent={[
+`const SingleComponentCounter = () => {
+    const [count, setCount] = useState(0);
           
-            return (
-              <div>
-                <h1>Single Component Counter</h1>
-                <p>Count: {count}</p>
-                <button className="btn btn-secondary" onClick={() => setCount(count + 1)}>
-                  Increment
-                </button>
-              </div>
-            );
-          };`}><ComponentDisplayWrapper type="react"><SingleComponentCounter client:load /></ComponentDisplayWrapper></WrapperWithCodeInMarkdown>
+    return (
+        <div>
+            <h1>Single Component Counter</h1>
+            <p>Count: {count}</p>
+            <button className="btn btn-secondary" onClick={() => setCount(count + 1)}>
+                Increment
+            </button>
+        </div>
+    );
+};`
+          ]}><ComponentDisplayWrapper type="react"><SingleComponentCounter client:load /></ComponentDisplayWrapper></WrapperWithCodeInMarkdown>
     </main>
 </Layout>

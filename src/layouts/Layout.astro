@@ -18,10 +18,22 @@ const { title } = Astro.props;
 	</head>
 	<body>
 		<div class="h-screen flex flex-col justify-between">
-		<header class="navbar bg-primary text-primary-content"><h1>VUE & REACT COMPARISON</h1>
-			<nav class="flex gap-x-2 mx-4"> React <a class="link" href="/react/single">Single File</a> <a class="link" href="/react/modular">Modular</a></nav>
-			<nav class="flex gap-x-2 mx-4"> Vue <a class="link" href="/vue/single">Single File</a> <a class="link" href="/vue/modular">Modular</a> <a class="link" href="/vue/modular-emitter">Modular with event emitter</a> <a class="link" href="/vue/modular-vmodel">Modular with model</a></nav></header>
-		<slot />
+		<header class="navbar bg-primary text-primary-content">
+			<h1><a href="/">VUE & REACT COMPARISON</a></h1>
+		</header>
+		<div class="flex flex-col justify-start h-full gap-y-4">
+			<nav class="flex justify-center gap-x-2 py-8"> 
+				<span>React</span>
+				<a class="link" href="/react/single">Single File</a> 
+				<a class="link" href="/react/modular">Modular</a>
+				<span>Vue</span>
+				<a class="link" href="/vue/single">Single File</a> 
+				<a class="link" href="/vue/modular">Modular</a> 
+				<a class="link" href="/vue/modular-emitter">Modular with event emitter</a> 
+				<a class="link" href="/vue/modular-vmodel">Modular with model</a>
+			</nav>
+			<slot />
+		</div>
 		<footer class="footer footer-center bg-primary text-base-content p-4">
 			<aside>
 			  <p>Karol Kosek - Deployed - {new Date().getFullYear()}</p>

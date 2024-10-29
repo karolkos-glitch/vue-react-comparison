@@ -7,7 +7,9 @@ import Layout from '../../layouts/Layout.astro';
 
 <Layout title="VUE & REACT COMPARISON">
 	<main class="flex justify-center">
-        <WrapperWithCodeInMarkdown markdownContent={`<template>
+        <WrapperWithCodeInMarkdown markdownContent={[
+`
+<template>
   <div>
     <h1>Modular Counter</h1>
     <CounterDisplayer :count="count" />
@@ -23,7 +25,33 @@ import CounterIncrementer from "./CounterIncrementer.vue";
 const count = ref(0);
 
 </script>
-`}>
+`,
+`
+// CounterDisplayer.vue
+
+<template>
+  <p>{{ props.count }}</p>
+</template>
+
+<script lang="ts" setup>
+const props = defineProps<{
+  count: Number;
+}>();
+</script>
+`,
+`
+// CounterIncrementer.vue
+
+<template>
+  <button class="btn btn-secondary" @click="props.increment">Increment</button>
+</template>
+
+<script lang="ts" setup>
+const props = defineProps<{
+  increment: () => void;
+}>();
+</script>
+`]}>
             <ComponentDisplayWrapper type="vue">
         <ModularCounter client:load/>
         </ComponentDisplayWrapper>

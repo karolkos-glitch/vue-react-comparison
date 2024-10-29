@@ -3,9 +3,9 @@
     <h1>Modular Counter</h1>
     <CounterDisplayer :count="count" />
     <CounterIncrementerWithEmitter @increment="handleIncrement" />
-    <div class="text-primary" v-show="messageFromChildren">{{
-      messageFromChildren
-    }}</div>
+    <div class="text-primary" v-show="messageFromChildren">
+      {{ messageFromChildren }}
+    </div>
   </div>
 </template>
 
@@ -14,7 +14,7 @@ import { ref } from "vue";
 import CounterDisplayer from "./CounterDisplayer.vue";
 import CounterIncrementerWithEmitter from "./CounterIncrementerWithEmitter.vue";
 
-const handleIncrement = (data) => {
+const handleIncrement = (data: string) => {
   count.value++;
   messageFromChildren.value = data;
 };

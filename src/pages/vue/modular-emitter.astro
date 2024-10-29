@@ -7,33 +7,63 @@ import Layout from '../../layouts/Layout.astro';
 
 <Layout title="VUE & REACT COMPARISON">
 	<main class="flex justify-center">
-        <WrapperWithCodeInMarkdown markdownContent={`<template>
-            <div>
-              <h1>Modular Counter</h1>
-              <CounterDisplayer :count="count" />
-              <CounterIncrementerWithEmitter @increment="handleIncrement" />
-              <div class="text-primary" v-show="messageFromChildren">{{
-                messageFromChildren
-              }}</div>
-            </div>
-          </template>
+        <WrapperWithCodeInMarkdown markdownContent={[
+`
+<template>
+    <div>
+        <h1>Modular Counter</h1>
+        <CounterDisplayer :count="count" />
+        <CounterIncrementerWithEmitter @increment="handleIncrement" />
+        <div class="text-primary" v-show="messageFromChildren">
+            {{ messageFromChildren }}
+        </div>
+    </div>
+</template>
           
-          <script setup lang="ts">
-          import { ref } from "vue";
-          import CounterDisplayer from "./CounterDisplayer.vue";
-          import CounterIncrementerWithEmitter from "./CounterIncrementerWithEmitter.vue";
-          
-          const handleIncrement = (data) => {
+<script setup lang="ts">
+import { ref } from "vue";
+import CounterDisplayer from "./CounterDisplayer.vue";
+import CounterIncrementerWithEmitter from "./CounterIncrementerWithEmitter.vue";
+
+const count = ref(0);
+const messageFromChildren = ref("");
+
+const handleIncrement = (data) => {
             count.value++;
             messageFromChildren.value = data;
-          };
-          const count = ref(0);
-          const messageFromChildren = ref("");
-          </script>
-          `}>
-          <ComponentDisplayWrapper type="vue">
-        <ModularCounterUsingEmitter client:load/>
-    </ComponentDisplayWrapper>
-    </WrapperWithCodeInMarkdown>
+    };
+
+</script>
+`, 
+`
+// CounterDisplayer.vue
+<template>
+  <p>{{ props.count }}</p>
+</template>
+
+<script lang="ts" setup>
+const props = defineProps<{
+  count: Number;
+}>();
+</script>
+`,
+`
+// CounterIncrementWithEmitter.vue
+<template>
+  <button class="btn btn-secondary" @click="emit('increment', 'Data from children')">
+    Increment
+  </button>
+</template>
+
+<script lang="ts" setup>
+import { defineEmits } from "vue";
+
+const emit = defineEmits(["increment"]);
+</script>
+`]}>
+            <ComponentDisplayWrapper type="vue">
+                 <ModularCounterUsingEmitter client:load/>
+            </ComponentDisplayWrapper>
+        </WrapperWithCodeInMarkdown>
     </main>
 </Layout>
