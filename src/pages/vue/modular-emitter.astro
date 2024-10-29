@@ -1,10 +1,39 @@
 ---
+import { ComponentDisplayWrapper } from '../../components/utils/ComponentDisplayWrapper';
+import { WrapperWithCodeInMarkdown } from '../../components/utils/WrapperWithCodeInMarkdown';
 import ModularCounterUsingEmitter from '../../components/vue/ModularCounterUsingEmitter/ModularCounter.vue';
 import Layout from '../../layouts/Layout.astro';
 ---
 
 <Layout title="VUE & REACT COMPARISON">
 	<main class="flex justify-center">
+        <WrapperWithCodeInMarkdown markdownContent={`<template>
+            <div>
+              <h1>Modular Counter</h1>
+              <CounterDisplayer :count="count" />
+              <CounterIncrementerWithEmitter @increment="handleIncrement" />
+              <div class="text-primary" v-show="messageFromChildren">{{
+                messageFromChildren
+              }}</div>
+            </div>
+          </template>
+          
+          <script setup lang="ts">
+          import { ref } from "vue";
+          import CounterDisplayer from "./CounterDisplayer.vue";
+          import CounterIncrementerWithEmitter from "./CounterIncrementerWithEmitter.vue";
+          
+          const handleIncrement = (data) => {
+            count.value++;
+            messageFromChildren.value = data;
+          };
+          const count = ref(0);
+          const messageFromChildren = ref("");
+          </script>
+          `}>
+          <ComponentDisplayWrapper type="vue">
         <ModularCounterUsingEmitter client:load/>
+    </ComponentDisplayWrapper>
+    </WrapperWithCodeInMarkdown>
     </main>
 </Layout>

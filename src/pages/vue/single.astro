@@ -1,10 +1,33 @@
 ---
 import SingleComponentCounter from '../../components/vue/SingleComponentCounter.vue';
 import Layout from '../../layouts/Layout.astro';
+import { WrapperWithCodeInMarkdown } from '../../components/utils/WrapperWithCodeInMarkdown';
+import { ComponentDisplayWrapper } from '../../components/utils/ComponentDisplayWrapper';
 ---
 
 <Layout title="VUE & REACT COMPARISON">
 	<main class="flex justify-center">
+
+        <WrapperWithCodeInMarkdown markdownContent={`
+<template>
+  <div>
+    <h1>Single Component Counter</h1>
+    <p>{{ count }}</p>
+    <button @click="count++" class="btn btn-primary">Increment</button>
+  </div>
+</template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+
+const count = ref(0);
+// const incrementInsideScript = () => count.value++;
+</script>
+
+            `}>
+                <ComponentDisplayWrapper type='vue'>
         <SingleComponentCounter client:load/>
+    </ComponentDisplayWrapper>
+</WrapperWithCodeInMarkdown>
     </main>
 </Layout>

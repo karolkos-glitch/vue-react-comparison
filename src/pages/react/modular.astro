@@ -1,10 +1,29 @@
 ---
 import ModularCounter from '../../components/react/ModularCounter/ModularCounter';
+import { ComponentDisplayWrapper } from '../../components/utils/ComponentDisplayWrapper';
+import { WrapperWithCodeInMarkdown } from '../../components/utils/WrapperWithCodeInMarkdown';
 import Layout from '../../layouts/Layout.astro';
 ---
 
 <Layout title="VUE & REACT COMPARISON">
 	<main class="flex justify-center">
+        <WrapperWithCodeInMarkdown markdownContent={`
+const ModularCounter = () => {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <h1>Modular Counter</h1>
+      <CounterDisplayer count={count} />
+      <CounterIncrementer setCount={setCount} />
+    </div>
+  );
+};
+
+export default ModularCounter;
+`}>
+    <ComponentDisplayWrapper type='react'>
         <ModularCounter client:load/>
+    </ComponentDisplayWrapper></WrapperWithCodeInMarkdown>
     </main>
 </Layout>

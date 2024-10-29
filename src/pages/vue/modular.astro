@@ -1,10 +1,32 @@
 ---
+import { ComponentDisplayWrapper } from '../../components/utils/ComponentDisplayWrapper';
+import { WrapperWithCodeInMarkdown } from '../../components/utils/WrapperWithCodeInMarkdown';
 import ModularCounter from '../../components/vue/ModularCounter/ModularCounter.vue';
 import Layout from '../../layouts/Layout.astro';
 ---
 
 <Layout title="VUE & REACT COMPARISON">
 	<main class="flex justify-center">
+        <WrapperWithCodeInMarkdown markdownContent={`<template>
+  <div>
+    <h1>Modular Counter</h1>
+    <CounterDisplayer :count="count" />
+    <CounterIncrementer :increment="() => count++" />
+  </div>
+</template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import CounterDisplayer from "./CounterDisplayer.vue";
+import CounterIncrementer from "./CounterIncrementer.vue";
+
+const count = ref(0);
+
+</script>
+`}>
+            <ComponentDisplayWrapper type="vue">
         <ModularCounter client:load/>
+        </ComponentDisplayWrapper>
+    </WrapperWithCodeInMarkdown>
     </main>
 </Layout>

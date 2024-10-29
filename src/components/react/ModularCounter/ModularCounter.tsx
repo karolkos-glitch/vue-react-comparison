@@ -2,7 +2,7 @@ import { useState } from "react";
 import CounterDisplayer from "./CounterDisplayer";
 import CounterIncrementer from "./CounterIncrementer";
 
-const SingleComponentCounter = () => {
+const ModularCounter = () => {
   const [count, setCount] = useState(0);
 
   return (
@@ -14,4 +14,4 @@ const SingleComponentCounter = () => {
   );
 };
 
-export default SingleComponentCounter;
+export default ModularCounter;
