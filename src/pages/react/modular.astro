@@ -14,9 +14,9 @@ const ModularCounter = () => {
 
     return (
         <div>
-        <h1>Modular Counter</h1>
-        <CounterDisplayer count={count} />
-        <CounterIncrementer setCount={setCount} />
+          <h1>Modular Counter</h1>
+          <CounterDisplayer count={count} />
+          <CounterIncrementer setCount={setCount} />
         </div>
     );
 };
@@ -35,7 +35,11 @@ const CounterIncrementer = ({
   setCount: React.Dispatch<(numb: number) => number>;
 }) => {
   return (
-    <button className="btn btn-secondary" onClick={() => setCount((count) => count + 1)}>Increment</button>
+    <button 
+      className="btn btn-secondary"
+      onClick={() => setCount((count) => count + 1)}>
+        Increment
+    </button>
   );
 };
 `

@@ -15,7 +15,7 @@ export function ComponentDisplayWrapper({
         {type.toUpperCase()}
       </h2>
       <div
-        className={`border p-4 h-full ${
+        className={`border p-4 h-full min-w-[400px] ${
           type === "react" ? "border-primary" : "border-secondary"
         }`}
       >

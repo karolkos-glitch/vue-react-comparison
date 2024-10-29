@@ -12,7 +12,7 @@ export function WrapperWithCodeInMarkdown({
         <div className="flex flex-col gap-y-4">
           {markdownContent.map((content) => (
             <div className="mockup-code p-4">
-              <pre>{content}</pre>
+              <pre className="whitespace-pre-wrap">{content}</pre>
             </div>
           ))}
         </div>

@@ -18,15 +18,15 @@ const { title } = Astro.props;
 	</head>
 	<body>
 		<div class="h-screen flex flex-col justify-between">
-		<header class="navbar bg-primary text-primary-content">
-			<h1><a href="/">VUE & REACT COMPARISON</a></h1>
+		<header class="navbar bg-primary text-primary-content ">
+			<h1 class="ml-16"><a class="font-bold" href="/">VUE & REACT COMPARISON</a></h1>
 		</header>
 		<div class="flex flex-col justify-start h-full gap-y-4">
 			<nav class="flex justify-center gap-x-2 py-8"> 
-				<span>React</span>
+				<span class="text-primary font-bold">React</span>
 				<a class="link" href="/react/single">Single File</a> 
 				<a class="link" href="/react/modular">Modular</a>
-				<span>Vue</span>
+				<span class="text-secondary font-bold">Vue</span>
 				<a class="link" href="/vue/single">Single File</a> 
 				<a class="link" href="/vue/modular">Modular</a> 
 				<a class="link" href="/vue/modular-emitter">Modular with event emitter</a> 
