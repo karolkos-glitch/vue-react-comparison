@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Modular Counter</h1>
+    <h1>Modular Counter - using VModel</h1>
     <CounterDisplayer :count="count" />
     <CounterIncrementerWithModel v-model="count" />
   </div>

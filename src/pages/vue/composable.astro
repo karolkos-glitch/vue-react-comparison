@@ -1,0 +1,46 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { WrapperWithCodeInMarkdown } from '../../components/utils/WrapperWithCodeInMarkdown';
+import { ComponentDisplayWrapper } from '../../components/utils/ComponentDisplayWrapper';
+import SingleComponentCounterComposable from '../../components/vue/Composable/SingleComponentCounterComposable.vue';
+---
+
+<Layout title="VUE & REACT COMPARISON">
+	<main class="flex justify-center">
+        <WrapperWithCodeInMarkdown markdownContent={[
+`
+<template>
+  <div>
+    <h1>Single Component Counter - using Composables</h1>
+    <p>{{ count }}</p>
+    <button @click="increment" class="btn btn-primary">Increment</button>
+  </div>
+</template>
+
+<script setup lang="ts">
+import { useCounter } from "./useCounter";
+
+const { count, increment } = useCounter();
+</script>
+`,
+`
+// useCounter.ts
+import { ref } from "vue";
+
+export const useCounter = () => {
+  const count = ref(0);
+
+  const increment = () => {
+    count.value++;
+  };
+
+  return { count, increment };
+};
+`
+]}>
+            <ComponentDisplayWrapper type='vue'>
+                <SingleComponentCounterComposable client:load/>
+            </ComponentDisplayWrapper>
+        </WrapperWithCodeInMarkdown>
+    </main>
+</Layout>

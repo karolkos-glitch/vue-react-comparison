@@ -5,7 +5,7 @@ const CounterIncrementer = ({
 }) => {
   return (
     <button 
-      className="btn btn-secondary"
+      className="btn btn-primary"
       onClick={() => setCount((count) => count + 1)}>
         Increment
     </button>

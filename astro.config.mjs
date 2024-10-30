@@ -9,5 +9,12 @@ import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [react(), vue(), tailwind()],
+  integrations: [
+    react(),
+    vue({
+      devtools: true,
+      appEntrypoint: "/src/pages/_app",
+    }),
+    tailwind(),
+  ],
 });

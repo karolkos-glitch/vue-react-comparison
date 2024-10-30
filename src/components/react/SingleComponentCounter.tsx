@@ -7,7 +7,7 @@ const SingleComponentCounter = () => {
     <div>
       <h1>Single Component Counter</h1>
       <p>Count: {count}</p>
-      <button className="btn btn-secondary" onClick={() => setCount(count + 1)}>
+      <button className="btn btn-primary" onClick={() => setCount(count + 1)}>
         Increment
       </button>
     </div>

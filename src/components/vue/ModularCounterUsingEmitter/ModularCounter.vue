@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Modular Counter</h1>
+    <h1>Modular Counter with Emitter</h1>
     <CounterDisplayer :count="count" />
     <CounterIncrementerWithEmitter @increment="handleIncrement" />
     <div class="text-primary" v-show="messageFromChildren">

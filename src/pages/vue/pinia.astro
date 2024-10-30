@@ -1,0 +1,70 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { WrapperWithCodeInMarkdown } from '../../components/utils/WrapperWithCodeInMarkdown';
+import { ComponentDisplayWrapper } from '../../components/utils/ComponentDisplayWrapper';
+import ModularCounter from '../../components/vue/Pinia/ModularCounter.vue';
+---
+
+<Layout title="VUE & REACT COMPARISON">
+	<main class="flex justify-center">
+        <WrapperWithCodeInMarkdown markdownContent={[
+`
+<template>
+  <div>
+    <h1>Modular Counter - with global State Management Pinia</h1>
+    <CounterDisplayer />
+    <CounterIncrementer />
+  </div>
+</template>
+
+<script setup lang="ts">
+import CounterDisplayer from "./CounterDisplayer.vue";
+import CounterIncrementer from "./CounterIncrementer.vue";
+</script>
+`,
+`
+// useCounterStore.ts
+import { defineStore } from "pinia";
+import { ref } from "vue";
+
+// const useCounterStore = defineStore("counter", useCounter);
+
+export const useCounterStore = defineStore("counter", () => {
+  const count = ref(0);
+
+  const increment = () => {
+    count.value++;
+  };
+
+  return { count, increment };
+});
+`,
+`
+<template>
+  <p>{{ count }}</p>
+</template>
+
+<script lang="ts" setup>
+import { useCounterStore } from "./useCounterStore";
+
+const { count } = useCounterStore();
+</script>
+`,
+`
+<template>
+  <button class="btn btn-secondary" @click="increment">Increment</button>
+</template>
+
+<script lang="ts" setup>
+import { useCounterStore } from "./useCounterStore";
+
+const { increment } = useCounterStore();
+</script>
+`
+]}>
+            <ComponentDisplayWrapper type='vue'>
+                <ModularCounter client:load/>
+            </ComponentDisplayWrapper>
+        </WrapperWithCodeInMarkdown>
+    </main>
+</Layout>

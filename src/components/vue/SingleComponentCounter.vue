@@ -2,7 +2,7 @@
   <div>
     <h1>Single Component Counter</h1>
     <p>{{ count }}</p>
-    <button @click="count++" class="btn btn-primary">Increment</button>
+    <button @click="count++" class="btn btn-secondary">Increment</button>
   </div>
 </template>
 
